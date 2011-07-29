@@ -1,11 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#ifdef __APPLE__
+/*#ifdef __APPLE__
 #include <GLUT/glut.h>
-#else
+#else*/
 #include <GL/glut.h>
-#endif
+//#endif
 
 void keyboard(unsigned char key, int x, int y);
 void display(void);
@@ -103,136 +103,29 @@ void ShowPokePic()
     time(&t);
     int i = t;
     glClear(GL_COLOR_BUFFER_BIT);
+    int z = 0;
+    for(int y = 1; y < 5; y++)
     {
+        for(int x = 1; x < 5; x++)
         {
             glBegin(GL_POLYGON);
-            glColor3f(PokePic[0], PokePic[0], PokePic[0]);
-            glVertex2f(PokeBit(1, 0), PokeBit(1, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(1, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(1, 0), PokeBit(2, 1));
+            glColor3f(PokePic[z], PokePic[z], PokePic[z]);
+            glVertex2f(PokeBit(x, 0), PokeBit(y, 1));
+            glVertex2f(PokeBit(x + 1, 0), PokeBit(y, 1));
+            glVertex2f(PokeBit(x + 1, 0), PokeBit(y + 1, 1));
+            glVertex2f(PokeBit(x, 0), PokeBit(y + 1, 1));
             glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[1], PokePic[1], PokePic[1]);
-            glVertex2f(PokeBit(2, 0), PokeBit(1, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(1, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(2, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[2], PokePic[2], PokePic[2]);
-            glVertex2f(PokeBit(3, 0), PokeBit(1, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(1, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(2, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[3], PokePic[3], PokePic[3]);
-            glVertex2f(PokeBit(4, 0), PokeBit(1, 1));
-            glVertex2f(PokeBit(5, 0), PokeBit(1, 1));
-            glVertex2f(PokeBit(5, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(2, 1));
-            glEnd();
-        }
-        {
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[4], PokePic[4], PokePic[4]);
-            glVertex2f(PokeBit(1, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(1, 0), PokeBit(3, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[5], PokePic[5], PokePic[5]);
-            glVertex2f(PokeBit(2, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(3, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[6], PokePic[6], PokePic[6]);
-            glVertex2f(PokeBit(3, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(3, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[7], PokePic[7], PokePic[7]);
-            glVertex2f(PokeBit(4, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(5, 0), PokeBit(2, 1));
-            glVertex2f(PokeBit(5, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(3, 1));
-            glEnd();
-        }
-        {
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[8], PokePic[8], PokePic[8]);
-            glVertex2f(PokeBit(1, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(1, 0), PokeBit(4, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[9], PokePic[9], PokePic[9]);
-            glVertex2f(PokeBit(2, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(4, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[10], PokePic[10], PokePic[10]);
-            glVertex2f(PokeBit(3, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(4, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[11], PokePic[11], PokePic[11]);
-            glVertex2f(PokeBit(4, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(5, 0), PokeBit(3, 1));
-            glVertex2f(PokeBit(5, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(4, 1));
-            glEnd();
-        }
-        {
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[12], PokePic[12], PokePic[12]);
-            glVertex2f(PokeBit(1, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(5, 1));
-            glVertex2f(PokeBit(1, 0), PokeBit(5, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[13], PokePic[13], PokePic[13]);
-            glVertex2f(PokeBit(2, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(5, 1));
-            glVertex2f(PokeBit(2, 0), PokeBit(5, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[14], PokePic[14], PokePic[14]);
-            glVertex2f(PokeBit(3, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(5, 1));
-            glVertex2f(PokeBit(3, 0), PokeBit(5, 1));
-            glEnd();
-            glBegin(GL_POLYGON);
-            glColor3f(PokePic[15], PokePic[15], PokePic[15]);
-            glVertex2f(PokeBit(4, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(5, 0), PokeBit(4, 1));
-            glVertex2f(PokeBit(5, 0), PokeBit(5, 1));
-            glVertex2f(PokeBit(4, 0), PokeBit(5, 1));
-            glEnd();
+            z++;
         }
     }
     glFlush();
-    while(-1)
+/*    while(-1)
     {
         time_t t;
         time(&t);
         int d = t - i;
         if (d >= 0.25) break;
-    }
+    }*/
 }
 
 float PokeBit(float n, bool isY)
