@@ -1,16 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-/*#ifdef __APPLE__
+#ifdef __APPLE__
 #include <GLUT/glut.h>
-#else*/
+#else
 #include <GL/glut.h>
-//#endif
+#endif
 
 void keyboard(unsigned char key, int x, int y);
 void display(void);
 void PokePicReverser();
 void ShowPokePic();
+void TestPic();
 
 float PokePic[4 * 4];
 float PokeBit(float n, bool isY);
@@ -35,6 +36,9 @@ void keyboard(unsigned char key, int x, int y)
         break;
     case 's':
         PokePicReverser();
+        break;
+    case 't':
+        TestPic();
         break;
     }
 }
@@ -138,3 +142,16 @@ float PokeBit(float n, bool isY)
     }
     return n;
 }
+
+void TestPic()
+{
+    PokePic = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f};
+    ShowPokePic();
+    PokePic = {1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f};
+    ShowPokePic();
+    PokePic = {1.0f, 0.0f, 0.0f, 0.0f,};
+    ShowPokePic();
+    PokePic = {};
+    ShowPokePic();
+}
+
