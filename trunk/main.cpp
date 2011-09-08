@@ -1,26 +1,37 @@
+// standart libarys
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+
+// GLUT libarys wiht corrct including for MAC
+
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
 #endif
 
-void keyboard(unsigned char key, int x, int y);
-void display(void);
-void PokePicReverser();
-void ShowPokePic();
-void TestPic();
+// pre-declaring from my function
+
+void keyboard(unsigned char key, int x, int y); // this function is for the key processing
+void display(void); // the startscreen ^^
+void PokePicReverser(); // in this function genarate the picture arrays via bruteforce
+void ShowPokePic(); // show the picture
+void TestPic(); // This function is for testing whether the DS can also recognize the images produced.
+
+// my used variables
 
 float PokePic[4 * 4];
 float PokeBit(float n, bool isY);
 
+// Thhis main function is a standart GLUT-Main
+
 int main(int argc, char** argv)
 {
-    glutInit(&argc, argv);
-    glutCreateWindow("Pokedex 3D - AR-Code Genarator");
-    glutKeyboardFunc(&keyboard);
+    glutInit(&argc, argv); // initialization of GLUT
+    glutCreateWindow("Pokedex 3D - AR-Code Genarator"); // Create a window whit the title
+    glutKeyboardFunc(&keyboard); //thel
     glutDisplayFunc(&display);
     glutMainLoop();
     return EXIT_SUCCESS;
@@ -123,13 +134,13 @@ void ShowPokePic()
         }
     }
     glFlush();
-/*    while(-1)
+    while(-1)
     {
         time_t t;
         time(&t);
         int d = t - i;
         if (d >= 0.25) break;
-    }*/
+    }
 }
 
 float PokeBit(float n, bool isY)
@@ -148,10 +159,6 @@ void TestPic()
     PokePic = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f};
     ShowPokePic();
     PokePic = {1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f};
-    ShowPokePic();
-    PokePic = {1.0f, 0.0f, 0.0f, 0.0f,};
-    ShowPokePic();
-    PokePic = {};
     ShowPokePic();
 }
 
