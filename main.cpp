@@ -19,11 +19,11 @@ void display(void); // the startscreen ^^
 void PokePicReverser(); // in this function genarate the picture arrays via bruteforce
 void ShowPokePic(); // show the picture
 void TestPic(); // This function is for testing whether the DS can also recognize the images produced.
+float PokeBit(float n, bool isY); // genrate the bitfield
 
-// my used variables
+//my variable
 
-float PokePic[4 * 4];
-float PokeBit(float n, bool isY);
+float PokePic[4 * 4]; // Bitfield of the picture
 
 // Thhis main function is a standart GLUT-Main
 
@@ -31,9 +31,9 @@ int main(int argc, char** argv)
 {
     glutInit(&argc, argv); // initialization of GLUT
     glutCreateWindow("Pokedex 3D - AR-Code Genarator"); // Create a window whit the title
-    glutKeyboardFunc(&keyboard); //thel
-    glutDisplayFunc(&display);
-    glutMainLoop();
+    glutKeyboardFunc(&keyboard); // Tells the keys to their functions.
+    glutDisplayFunc(&display); // Tells GLUT to main scene.
+    glutMainLoop(); // Main loop from GLUT
     return EXIT_SUCCESS;
 }
 
@@ -42,13 +42,13 @@ void keyboard(unsigned char key, int x, int y)
 {
     switch (key)
     {
-    case '\x1B':
+    case '\x1B': // If pressing escap then exit.
         exit(EXIT_SUCCESS);
         break;
-    case 's':
+    case 's': // If pressing "s" then generate the picture or ar-codes.
         PokePicReverser();
         break;
-    case 't':
+    case 't': // If pressing "t" then 2 working AR codes are displayed.
         TestPic();
         break;
     }
@@ -57,9 +57,9 @@ void keyboard(unsigned char key, int x, int y)
 
 void display()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT); // Clear the screen.
 
-    glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON); // Create a colorfull screen.
     glColor3f(1.0f, 1.0f, 1.0f);
     glVertex2f(-1.0f, -1.0f);
     glColor3f(1.0f, 1.0f, 0.0f);
@@ -75,14 +75,9 @@ void display()
 
 void PokePicReverser()
 {
-    int a = 0;
-    float PokePicTemp[4 * 4];
-    for(int i = 0; i < 17; i++)
-    {
-        PokePicTemp[i] = 1.0f;
-    }
-    ShowPokePic();
-    while(!(PokePic == PokePicTemp))
+    int a = 0; // This variable is the running number.
+    ShowPokePic(); // Used here to clear the screen.
+    while(!(PokePic[4 * 4 + 1] == 1.0f))
     {
         PokePic[a]++;
         if(PokePic[a] == 2.0f)
