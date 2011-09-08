@@ -14,5 +14,5 @@ All: Pokegen
 Pokegen: main.o $(OBJECTS) 
 	$(CC) $(FRAMEWORK) $(CFLAGS) -o $@ $(LIBPATH) $(OBJECTS)
 
-$(LIBRARIES) 
-       ./GlutExample
+#$(LIBRARIES) 
+#       ./GlutExample
