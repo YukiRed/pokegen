@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <time.h>
 
-// GLUT libarys wiht corrct including for MAC
+// GLUT librarys wiht correct including for MAC
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
